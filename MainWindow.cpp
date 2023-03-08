@@ -9,7 +9,6 @@ MainWindow::MainWindow(const QSize& maxBackgroundSize) {
     int screenHeight = wid.height();
     this->setGeometry((screenWidth/2)-(width/2),(screenHeight/2)-(height/2),width,height);
 
-
     QWidget* widget = new QWidget(this);
     widget->setFixedSize(this->size());
 

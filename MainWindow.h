@@ -2,6 +2,7 @@
 #include "WindowRead.h"
 #include "WindowGetRight.h"
 #include "WindowGrant.h"
+#include "WindowListStorage.h"
 class MainWindow : public QMainWindow{
 Q_OBJECT
 
@@ -12,11 +13,14 @@ private:
     WindowGetRight* windowGetRight;
     QPushButton *btnGetRight;
     WindowGrant *windowGrant;
+    WindowListStorage* windowListStorage;
+    QPushButton *btnListStorage;
     QLabel* labelID;
 private slots:
-    void handleButton();
+    void handlerButton();
     void handlerGetRight();
     void handlerGrant();
+    void handlerListStorage();
 
 public:
     MainWindow(const QSize& maxBackgroundSize);

@@ -15,7 +15,7 @@ find_package(PkgConfig REQUIRED)
 pkg_check_modules(MyLib REQUIRED IMPORTED_TARGET MyLib)
 find_package(nlohmann_json CONFIG REQUIRED)
 
-add_executable(TryGUI main.cpp MainWindow.cpp MainWindow.h WindowRead.cpp WindowRead.h WindowGetRight.cpp WindowGetRight.h WindowGrant.cpp WindowGrant.h)
+add_executable(TryGUI main.cpp MainWindow.cpp MainWindow.h WindowRead.cpp WindowRead.h WindowGetRight.cpp WindowGetRight.h WindowGrant.cpp WindowGrant.h WindowListStorage.cpp WindowListStorage.h)
 
 target_link_libraries(TryGUI
         Qt5::Core

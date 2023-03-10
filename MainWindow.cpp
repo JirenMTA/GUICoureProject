@@ -16,19 +16,23 @@ MainWindow::MainWindow(const QSize& maxBackgroundSize) {
     setuid(getuid());
     string uid_instr = to_string((int)(getuid()));
     labelID->setText(QString("USER ID: ") + QString(uid_instr.c_str()));
-    labelID->setFixedSize(200, 50);
+    labelID->setFixedSize(200, 40);
 
     btnOpen = new QPushButton("Open file", widget);
-    btnOpen->setFixedSize(QSize(200, 50));
-    connect(btnOpen, &QPushButton::released, this, &MainWindow::handleButton);
+    btnOpen->setFixedSize(QSize(200, 40));
+    connect(btnOpen, &QPushButton::released, this, &MainWindow::handlerButton);
 
     btnGetRight = new QPushButton("Get right", widget);
-    btnGetRight->setFixedSize(QSize(200, 50));
+    btnGetRight->setFixedSize(QSize(200, 40));
     connect(btnGetRight, &QPushButton::released, this, &MainWindow::handlerGetRight);
 
     btnGrant = new QPushButton("Grant right", widget);
-    btnGrant->setFixedSize(QSize(200, 50));
+    btnGrant->setFixedSize(QSize(200, 40));
     connect(btnGrant, &QPushButton::released, this, &MainWindow::handlerGrant);
+
+    btnListStorage = new QPushButton("List storage");
+    btnListStorage->setFixedSize(QSize(200, 40));
+    connect(btnListStorage, &QPushButton::released, this, &MainWindow::handlerListStorage);
 
     QGridLayout* grid = new QGridLayout(widget);
 
@@ -36,16 +40,16 @@ MainWindow::MainWindow(const QSize& maxBackgroundSize) {
     grid->addWidget(btnOpen, 1, 0);
     grid->addWidget(btnGetRight, 2, 0);
     grid->addWidget(btnGrant, 3,0);
+    grid->addWidget(btnListStorage, 4, 0);
 
     widget->show();
     sec_init();
 }
 
-void MainWindow::handleButton() {
+void MainWindow::handlerButton() {
     WindowRead* windowRead = new WindowRead (QSize(400, 300));
     windowRead->show();
-    //windowRead
-    //windowRead;
+
 }
 
  MainWindow::~MainWindow() noexcept {
@@ -71,7 +75,10 @@ void MainWindow::handlerGrant() {
     windowGrant->show();;
 }
 
-
+void MainWindow::handlerListStorage() {
+    windowListStorage = new WindowListStorage(QSize(400,300));
+    windowListStorage->show();
+}
 
 
 

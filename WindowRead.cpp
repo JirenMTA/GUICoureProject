@@ -14,7 +14,7 @@ WindowRead::WindowRead(QSize fixedSize) {
     int screenWidth = wid.width();
     int screenHeight = wid.height();
     this->setGeometry((screenWidth/2)-(width/2),(screenHeight/2)-(height/2),width,height);
-    
+
     AddBtnAndTb();
 }
 
@@ -64,12 +64,15 @@ void WindowRead::getDataOfFile()
 {
     string uid = name->toPlainText().toStdString();
     string filename = file->toPlainText().toStdString();
-    char short_text[64];
+    off_t file_size;
+    
+    
+    char* short_text;
 
     QMessageBox msgBox;
     try
     {
-	    int receivedFd = sec_openat(std::stoi(uid), filename.c_str(), 0x777);
+	    int receivedFd = sec_openat(std::stoi(uid), filename.c_str(), 777);
 	    if (receivedFd < 0)
 	    {
 	    	msgBox.setText("Error open file!");
@@ -77,8 +80,12 @@ void WindowRead::getDataOfFile()
 	    }
 	    else
 	    {
-            read(receivedFd, short_text, sizeof(short_text));
+	    file_size = lseek(receivedFd, 0, SEEK_END); 
+	    short_text = new char[(int)file_size+1];
+	    lseek(receivedFd, 0, SEEK_SET);
+            read(receivedFd, short_text, (int)file_size);
             text->setText(short_text);
+            delete short_text;
 	    }
     }
     catch (const std::exception& ex)
@@ -95,7 +102,7 @@ void WindowRead::setTextHandler() {
     QMessageBox msgBox;
     try
     {
-        int receivedFd = sec_openat(std::stoi(uid), filename.c_str(), 0x777);
+        int receivedFd = sec_openat(std::stoi(uid), filename.c_str(), 0777);
         if (receivedFd < 0)
         {
             msgBox.setText("Error open file!");
@@ -103,7 +110,8 @@ void WindowRead::setTextHandler() {
         }
         else
         {
-            if( write(receivedFd, text->toPlainText().toStdString().c_str(), sizeof(text->toPlainText().toStdString())) < 0)
+            string new_text = text->toPlainText().toStdString();           
+            if( write(receivedFd, new_text.c_str(), new_text.length()+1) < 0)
                 throw  std::invalid_argument("No permission to write");
         }
     }

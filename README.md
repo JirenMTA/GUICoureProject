@@ -8,4 +8,4 @@
 [![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=0FF74B&width=435&lines=Реализация+хранилища+с+дискреционным+контролем+доступа)](https://git.io/typing-svg)
 
 This is a GUI application built for course project using Qt5.
-To complie this, please install [this library](https://github.com/JirenMTA/CoureProject_SystemProgramming/tree/main/IncludeMake) before
+To complie this, please install [this library](https://github.com/JirenMTA/CoureProject_SystemProgramming/tree/main/ServerSide/IncludeMake) before

@@ -17,3 +17,14 @@ cd build
 cmake ..
 make
 ```
+
+## Review about this app
+
+#### Login window 
+![image](https://user-images.githubusercontent.com/91962461/232251962-182694fd-ad91-4897-8677-2415b8d59525.png)
+
+#### Main window
+![image](https://user-images.githubusercontent.com/91962461/232251899-f765b048-9cda-4826-aa74-8a46cc4d25dc.png)
+
+#### Request open a file by name and owner file
+![image](https://user-images.githubusercontent.com/91962461/232251915-faea7dfa-a480-408d-b82e-7ef009bbd6c0.png)

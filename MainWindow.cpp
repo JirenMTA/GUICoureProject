@@ -48,9 +48,9 @@ MainWindow::MainWindow(const QSize& maxBackgroundSize) {
     grid->addWidget(btnOpen, 1, 0);
     grid->addWidget(btnGetRight, 2, 0);
     grid->addWidget(btnGrant, 3,0);
-    grid->addWidget(btnListStorage, 4, 0);
-    grid->addWidget(btnRevoke, 1, 1);
-    grid->addWidget(btnDelete,2, 1);
+    grid->addWidget(btnListStorage, 1, 1);
+    grid->addWidget(btnRevoke, 2, 1);
+    grid->addWidget(btnDelete,3, 1);
     widget->show();
     sec_init();
 }
